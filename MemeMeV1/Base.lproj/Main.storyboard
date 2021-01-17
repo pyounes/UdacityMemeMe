@@ -15,10 +15,45 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sln-SV-D7m">
+                                <rect key="frame" x="0.0" y="622" width="375" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="vIX-nw-Plz"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem title="Item" image="camera" catalog="system" id="ZsD-Js-bpN">
+                                        <connections>
+                                            <action selector="pickImageFromCamera:" destination="BYZ-38-t0r" id="0eo-XK-HT6"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="Pick From Gallery" id="ZTT-Ek-SoN">
+                                        <connections>
+                                            <action selector="pickImageFromGallery:" destination="BYZ-38-t0r" id="oPf-r0-dqh"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="N64-FM-NNR">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="622"/>
+                            </imageView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="N64-FM-NNR" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="BZQ-ht-fR6"/>
+                            <constraint firstItem="Sln-SV-D7m" firstAttribute="top" secondItem="N64-FM-NNR" secondAttribute="bottom" id="NrS-j6-iuM"/>
+                            <constraint firstItem="Sln-SV-D7m" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Xn6-Il-UWc"/>
+                            <constraint firstItem="Sln-SV-D7m" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="YkI-rj-jOR"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="N64-FM-NNR" secondAttribute="trailing" id="a5s-lF-bRr"/>
+                            <constraint firstItem="Sln-SV-D7m" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="kqp-tm-08N"/>
+                            <constraint firstItem="N64-FM-NNR" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="m02-Fv-0Cb"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="g3c-Gq-OLs"/>
+                    <connections>
+                        <outlet property="imageView" destination="N64-FM-NNR" id="1j7-pM-3DO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -26,6 +61,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="camera" catalog="system" width="128" height="94"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
