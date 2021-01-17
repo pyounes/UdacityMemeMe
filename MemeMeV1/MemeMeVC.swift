@@ -11,22 +11,33 @@ class MemeMeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
 
     // MARK: - Outlets
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var cameraButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
+    }
 
     // MARK: - Image From Camera
     @IBAction func pickImageFromCamera(_ sender: UIBarButtonItem) {
-
+        // Create and launch the image picker from Camera
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = .camera
+        present(imagePicker, animated: true, completion: nil)
     }
     
     // MARK: - Image From Gallery
     @IBAction func pickImageFromGallery(_ sender: Any) {
-        // Create and launch the image picker
+        // Create and launch the image picker from the gallery
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
+        imagePicker.sourceType = .photoLibrary
         present(imagePicker, animated: true, completion: nil)
     }
     

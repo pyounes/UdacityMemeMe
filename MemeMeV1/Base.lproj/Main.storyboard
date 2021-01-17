@@ -52,6 +52,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="g3c-Gq-OLs"/>
                     <connections>
+                        <outlet property="cameraButton" destination="ZsD-Js-bpN" id="ZZa-cX-Hfh"/>
                         <outlet property="imageView" destination="N64-FM-NNR" id="1j7-pM-3DO"/>
                     </connections>
                 </viewController>
