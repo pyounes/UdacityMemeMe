@@ -19,7 +19,7 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sln-SV-D7m">
                                 <rect key="frame" x="0.0" y="622" width="375" height="45"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="vIX-nw-Plz"/>
+                                    <constraint firstAttribute="height" constant="45" id="0WA-6i-qRb"/>
                                 </constraints>
                                 <items>
                                     <barButtonItem title="Item" image="camera" catalog="system" id="ZsD-Js-bpN">
@@ -37,23 +37,41 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="N64-FM-NNR">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="622"/>
                             </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0eo-xA-SBY">
+                                <rect key="frame" x="26" y="30" width="323" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="V5J-m8-2v4">
+                                <rect key="frame" x="26" y="558" width="323" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="N64-FM-NNR" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="BZQ-ht-fR6"/>
-                            <constraint firstItem="Sln-SV-D7m" firstAttribute="top" secondItem="N64-FM-NNR" secondAttribute="bottom" id="NrS-j6-iuM"/>
-                            <constraint firstItem="Sln-SV-D7m" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Xn6-Il-UWc"/>
-                            <constraint firstItem="Sln-SV-D7m" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="YkI-rj-jOR"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="N64-FM-NNR" secondAttribute="trailing" id="a5s-lF-bRr"/>
-                            <constraint firstItem="Sln-SV-D7m" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="kqp-tm-08N"/>
-                            <constraint firstItem="N64-FM-NNR" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="m02-Fv-0Cb"/>
+                            <constraint firstItem="Sln-SV-D7m" firstAttribute="top" secondItem="V5J-m8-2v4" secondAttribute="bottom" constant="30" id="50Z-vZ-rWL"/>
+                            <constraint firstItem="0eo-xA-SBY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="26" id="9AM-vo-a01"/>
+                            <constraint firstItem="N64-FM-NNR" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="DbE-tk-gLk"/>
+                            <constraint firstItem="Sln-SV-D7m" firstAttribute="top" secondItem="N64-FM-NNR" secondAttribute="bottom" id="EcA-3k-OYz"/>
+                            <constraint firstItem="N64-FM-NNR" firstAttribute="trailing" secondItem="Sln-SV-D7m" secondAttribute="trailing" id="KD4-0b-mf7"/>
+                            <constraint firstItem="0eo-xA-SBY" firstAttribute="leading" secondItem="V5J-m8-2v4" secondAttribute="leading" id="Mao-EQ-nfx"/>
+                            <constraint firstItem="N64-FM-NNR" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="PMr-Bh-8Ae"/>
+                            <constraint firstItem="0eo-xA-SBY" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="Pnn-Rt-pUI"/>
+                            <constraint firstItem="N64-FM-NNR" firstAttribute="leading" secondItem="Sln-SV-D7m" secondAttribute="leading" id="SiQ-nf-MXR"/>
+                            <constraint firstItem="N64-FM-NNR" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="UqF-VM-9hj"/>
+                            <constraint firstItem="0eo-xA-SBY" firstAttribute="trailing" secondItem="V5J-m8-2v4" secondAttribute="trailing" id="YxZ-co-4LP"/>
+                            <constraint firstItem="V5J-m8-2v4" firstAttribute="centerX" secondItem="Sln-SV-D7m" secondAttribute="centerX" id="f2u-su-Cpu"/>
+                            <constraint firstItem="Sln-SV-D7m" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="vJT-DY-JTX"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="g3c-Gq-OLs"/>
                     <connections>
+                        <outlet property="bottomTextField" destination="V5J-m8-2v4" id="3Ii-hf-sMV"/>
                         <outlet property="cameraButton" destination="ZsD-Js-bpN" id="ZZa-cX-Hfh"/>
                         <outlet property="imageView" destination="N64-FM-NNR" id="1j7-pM-3DO"/>
+                        <outlet property="topTextField" destination="0eo-xA-SBY" id="0oX-qL-3rL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
