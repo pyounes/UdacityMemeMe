@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MemeMeVC.swift
 //  MemeMeV1
 //
 //  Created by Pierre Younes on 1/4/21.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class MemeMeVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
