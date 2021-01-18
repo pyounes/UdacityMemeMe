@@ -32,10 +32,49 @@ class MemeMeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
+        super.viewWillAppear(animated)
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
+        
+        // Subscribe to Keyboard Event
+        subscribeToKeyboardNotification()
     }
-
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // Unsubscribe from Keyboard notification
+        unsubscribeToKeyboardNotification()
+    }
+    
+    // MARK: - Subscribing to notification
+    func subscribeToKeyboardNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(KeyboardWillShow(_:)), name: UIWindow.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(KeyboardWillHide(_:)), name: UIWindow.keyboardWillHideNotification, object: nil)
+    }
+    
+    // MARK: - UnSubscribe from notifications
+    func unsubscribeToKeyboardNotification() {
+        NotificationCenter.default.removeObserver(self, name: UIWindow.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIWindow.keyboardWillHideNotification, object: nil)
+    }
+    
+    // MARK: - Action when keyboard is Shown or Hidden
+    @objc private func KeyboardWillShow(_ notification: Notification) {
+        view.frame.origin.y = -getKeyboardHeight(notification)
+    }
+    
+    // When Hidden
+    @objc private func KeyboardWillHide(_ notification: Notification) {
+        view.frame.origin.y = 0
+    }
+    
+    
+    // get Keyboard Height
+    func getKeyboardHeight(_ notification: Notification) -> CGFloat {
+        let userInfo = notification.userInfo
+        let keyboardSize = userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! NSValue
+        return keyboardSize.cgRectValue.height
+    }
     // MARK: - Image From Camera
     @IBAction func pickImageFromCamera(_ sender: UIBarButtonItem) {
         // Create and launch the image picker from Camera
