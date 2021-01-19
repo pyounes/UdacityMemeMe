@@ -4,7 +4,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -18,6 +17,9 @@
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sln-SV-D7m">
                                 <rect key="frame" x="0.0" y="622" width="375" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="QWp-Za-1cZ"/>
+                                </constraints>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="Ccl-tF-8n0"/>
                                     <barButtonItem title="Item" image="camera" catalog="system" id="ZsD-Js-bpN">
@@ -37,55 +39,56 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="N64-FM-NNR">
                                 <rect key="frame" x="0.0" y="45" width="375" height="577"/>
                             </imageView>
-                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="V5J-m8-2v4">
-                                <rect key="frame" x="26" y="534.5" width="323" height="57.5"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0eo-xA-SBY" customClass="MemeMeUITextField" customModule="MemeMeV1" customModuleProvider="target">
+                                <rect key="frame" x="10" y="75" width="355" height="49.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Ui-Ir-jPx">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="cNn-mj-iF7"/>
+                                    <constraint firstAttribute="height" constant="45" id="ChX-Ys-Obe"/>
                                 </constraints>
                                 <items>
                                     <barButtonItem systemItem="action" id="kNx-A7-e5m"/>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="1K5-TP-Qm2"/>
-                                    <barButtonItem title="Item" systemItem="cancel" id="Qy2-lZ-4kz"/>
+                                    <barButtonItem systemItem="cancel" id="Qy2-lZ-4kz"/>
                                 </items>
                             </toolbar>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0eo-xA-SBY">
-                                <rect key="frame" x="25" y="70" width="325" height="57.5"/>
+                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="V5J-m8-2v4" customClass="MemeMeUITextField" customModule="MemeMeV1" customModuleProvider="target">
+                                <rect key="frame" x="10" y="542.5" width="355" height="49.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="N64-FM-NNR" firstAttribute="top" secondItem="8Ui-Ir-jPx" secondAttribute="bottom" id="5N8-Yo-Pz8"/>
-                            <constraint firstItem="Sln-SV-D7m" firstAttribute="top" secondItem="V5J-m8-2v4" secondAttribute="bottom" constant="30" id="7GU-h5-GxH"/>
-                            <constraint firstItem="0eo-xA-SBY" firstAttribute="top" secondItem="8Ui-Ir-jPx" secondAttribute="bottom" constant="25" id="MaW-ZB-wFC"/>
-                            <constraint firstItem="8Ui-Ir-jPx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="MeA-jY-nSg"/>
-                            <constraint firstItem="N64-FM-NNR" firstAttribute="trailing" secondItem="Sln-SV-D7m" secondAttribute="trailing" id="NvS-e1-cbL"/>
-                            <constraint firstItem="N64-FM-NNR" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="OP3-jt-Xaw"/>
-                            <constraint firstItem="Sln-SV-D7m" firstAttribute="top" secondItem="N64-FM-NNR" secondAttribute="bottom" id="PZO-Aj-Z8V"/>
-                            <constraint firstItem="8Ui-Ir-jPx" firstAttribute="leading" secondItem="N64-FM-NNR" secondAttribute="leading" id="QqV-Gu-1mo"/>
-                            <constraint firstItem="V5J-m8-2v4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="26" id="Tgq-Ou-qsG"/>
-                            <constraint firstItem="8Ui-Ir-jPx" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="VHj-1Z-Kfw"/>
-                            <constraint firstItem="0eo-xA-SBY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="25" id="dbb-lP-Thv"/>
-                            <constraint firstItem="8Ui-Ir-jPx" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="don-u0-Bng"/>
-                            <constraint firstItem="8Ui-Ir-jPx" firstAttribute="centerX" secondItem="0eo-xA-SBY" secondAttribute="centerX" id="g9p-Wd-FoN"/>
-                            <constraint firstItem="N64-FM-NNR" firstAttribute="leading" secondItem="Sln-SV-D7m" secondAttribute="leading" id="nAb-qb-h41"/>
-                            <constraint firstItem="8Ui-Ir-jPx" firstAttribute="trailing" secondItem="N64-FM-NNR" secondAttribute="trailing" id="niF-GN-d5P"/>
-                            <constraint firstItem="Sln-SV-D7m" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="ovJ-3c-LI6"/>
-                            <constraint firstItem="V5J-m8-2v4" firstAttribute="centerX" secondItem="Sln-SV-D7m" secondAttribute="centerX" id="x47-Xf-Oix"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="V5J-m8-2v4" secondAttribute="trailing" constant="10" id="Cik-EP-Tv8"/>
+                            <constraint firstItem="8Ui-Ir-jPx" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Ckj-kS-mK6"/>
+                            <constraint firstItem="Sln-SV-D7m" firstAttribute="top" secondItem="V5J-m8-2v4" secondAttribute="bottom" constant="30" id="GDh-uy-Dsg"/>
+                            <constraint firstItem="0eo-xA-SBY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="GGl-xc-uRp"/>
+                            <constraint firstItem="Sln-SV-D7m" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="HMr-y1-3Jq"/>
+                            <constraint firstItem="Sln-SV-D7m" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="LZG-at-wp6"/>
+                            <constraint firstItem="0eo-xA-SBY" firstAttribute="top" secondItem="8Ui-Ir-jPx" secondAttribute="bottom" constant="30" id="SHl-R8-dAi"/>
+                            <constraint firstItem="Sln-SV-D7m" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="aJx-ZK-L9K"/>
+                            <constraint firstItem="Sln-SV-D7m" firstAttribute="top" secondItem="N64-FM-NNR" secondAttribute="bottom" id="fEJ-Bz-qad"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="N64-FM-NNR" secondAttribute="trailing" id="ive-l2-524"/>
+                            <constraint firstItem="V5J-m8-2v4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="jdA-xU-1rZ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="0eo-xA-SBY" secondAttribute="trailing" constant="10" id="mCi-OD-Oq5"/>
+                            <constraint firstItem="8Ui-Ir-jPx" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="teU-8p-eRk"/>
+                            <constraint firstItem="N64-FM-NNR" firstAttribute="top" secondItem="8Ui-Ir-jPx" secondAttribute="bottom" id="wL2-qD-e4K"/>
+                            <constraint firstItem="N64-FM-NNR" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="wPV-yY-Xua"/>
+                            <constraint firstItem="8Ui-Ir-jPx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="x0H-V1-nhI"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="g3c-Gq-OLs"/>
                     <connections>
                         <outlet property="bottomTextField" destination="V5J-m8-2v4" id="3Ii-hf-sMV"/>
                         <outlet property="cameraButton" destination="ZsD-Js-bpN" id="ZZa-cX-Hfh"/>
+                        <outlet property="cancelButton" destination="Qy2-lZ-4kz" id="BQV-pn-Nxl"/>
                         <outlet property="imageView" destination="N64-FM-NNR" id="1j7-pM-3DO"/>
+                        <outlet property="shareButton" destination="kNx-A7-e5m" id="BcR-Cc-MP8"/>
                         <outlet property="topTextField" destination="0eo-xA-SBY" id="0oX-qL-3rL"/>
                     </connections>
                 </viewController>
@@ -96,8 +99,5 @@
     </scenes>
     <resources>
         <image name="camera" catalog="system" width="128" height="94"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>
