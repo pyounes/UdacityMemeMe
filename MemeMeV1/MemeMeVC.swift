@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MemeMeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class MemeMeVC: UIViewController, UITextFieldDelegate {
 
     // MARK: - Outlets
     @IBOutlet weak var imageView: UIImageView!
@@ -16,12 +16,16 @@ class MemeMeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
     
+    
+    // MARK: - Variables
+    
     private let memeTextAttributes: [NSAttributedString.Key: Any] = [
         NSAttributedString.Key.strokeColor: UIColor.black,
         NSAttributedString.Key.foregroundColor: UIColor.white,
         NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
         NSAttributedString.Key.strokeWidth:  3.0
     ]
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +33,8 @@ class MemeMeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         
         topTextField.defaultTextAttributes = memeTextAttributes
         bottomTextField.defaultTextAttributes = memeTextAttributes
+        bottomTextField.delegate = self
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -75,13 +81,20 @@ class MemeMeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         let keyboardSize = userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! NSValue
         return keyboardSize.cgRectValue.height
     }
+    
+    // MARK: - Picker Loader
+    func loadPicker(_ type: UIImagePickerController.SourceType) {
+        
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = type
+        present(imagePicker, animated: true, completion: nil)
+        
+    }
     // MARK: - Image From Camera
     @IBAction func pickImageFromCamera(_ sender: UIBarButtonItem) {
         // Create and launch the image picker from Camera
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.sourceType = .camera
-        present(imagePicker, animated: true, completion: nil)
+        loadPicker(.camera)
     }
     
     // MARK: - Image From Gallery
@@ -93,6 +106,18 @@ class MemeMeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         present(imagePicker, animated: true, completion: nil)
     }
     
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        bottomTextField.resignFirstResponder()
+        return true
+    }
+    
+}
+
+
+
+extension MemeMeVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let pickedGalleryImage = info[.originalImage] as? UIImage {
             imageView.image = pickedGalleryImage
@@ -103,7 +128,5 @@ class MemeMeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
-    
-    
 }
 
