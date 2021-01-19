@@ -19,7 +19,15 @@ class MemeMeVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var shareButton: UIBarButtonItem!
     
-
+    // MARK: Variables
+    var isImageSelected: Bool = false {
+        didSet {
+            shareButton.isEnabled = isImageSelected
+            cancelButton.isEnabled = isImageSelected
+        }
+    }
+    
+    
     // MARK: - App Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +35,8 @@ class MemeMeVC: UIViewController, UITextFieldDelegate {
         
         topTextField.delegate = self
         bottomTextField.delegate = self
+        
+        isImageSelected = false
         
     }
     
@@ -99,13 +109,28 @@ class MemeMeVC: UIViewController, UITextFieldDelegate {
         loadImagePicker(.photoLibrary)
     }
     
+    // MARK: - Share the Meme
+    @IBAction func shareMeme(_ sender: UIBarButtonItem) {
+        let memedImage = generateMemedImage()
+        let controller = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
+        present(controller, animated: true, completion: nil)
+    }
+    
+    @IBAction func cancel(_ sender: UIBarButtonItem) {
+        
+        self.imageView.image = nil
+        self.topTextField.text = "TOP"
+        self.bottomTextField.text = "BOTTOM"
+        self.isImageSelected = false
+    }
+    
+    // MARK: - Delegates
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        
         if textField.tag == 1 {
             if textField.text == "BOTTOM" { textField.text = "" }
         } else {
@@ -114,6 +139,29 @@ class MemeMeVC: UIViewController, UITextFieldDelegate {
 
         return true
     }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField.tag == 1 {
+            if textField.text == "" { textField.text = "BOTTOM" }
+        } else {
+            if textField.text == "" { textField.text = "TOP" }
+        }
+    }
+    
+    
+    // MARK: - Generate Memed Image from Frame
+    private func generateMemedImage() -> UIImage {
+        
+        
+        
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
+        let memedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+        return memedImage
+    }
+
     
 }
 
@@ -124,6 +172,7 @@ extension MemeMeVC: UIImagePickerControllerDelegate, UINavigationControllerDeleg
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let pickedGalleryImage = info[.originalImage] as? UIImage {
             imageView.image = pickedGalleryImage
+            isImageSelected = true
         }
         dismiss(animated: true, completion: nil)
     }
