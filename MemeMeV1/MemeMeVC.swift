@@ -18,6 +18,7 @@ class MemeMeVC: UIViewController, UITextFieldDelegate {
     
     
     // MARK: - Variables
+    var isBottomTextField: Bool = false
     
     private let memeTextAttributes: [NSAttributedString.Key: Any] = [
         NSAttributedString.Key.strokeColor: UIColor.black,
@@ -33,6 +34,7 @@ class MemeMeVC: UIViewController, UITextFieldDelegate {
         
         topTextField.defaultTextAttributes = memeTextAttributes
         bottomTextField.defaultTextAttributes = memeTextAttributes
+        topTextField.delegate = self
         bottomTextField.delegate = self
         
     }
@@ -66,12 +68,12 @@ class MemeMeVC: UIViewController, UITextFieldDelegate {
     
     // MARK: - Action when keyboard is Shown or Hidden
     @objc private func KeyboardWillShow(_ notification: Notification) {
-        view.frame.origin.y = -getKeyboardHeight(notification)
+        if isBottomTextField { view.frame.origin.y = -getKeyboardHeight(notification) }
     }
     
     // When Hidden
     @objc private func KeyboardWillHide(_ notification: Notification) {
-        view.frame.origin.y = 0
+        if isBottomTextField { view.frame.origin.y = 0 }
     }
     
     
@@ -100,15 +102,19 @@ class MemeMeVC: UIViewController, UITextFieldDelegate {
     // MARK: - Image From Gallery
     @IBAction func pickImageFromGallery(_ sender: Any) {
         // Create and launch the image picker from the gallery
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.sourceType = .photoLibrary
-        present(imagePicker, animated: true, completion: nil)
+        loadPicker(.photoLibrary)
     }
     
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        bottomTextField.resignFirstResponder()
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        
+        
+        isBottomTextField = textField.tag == 1 ? true : false
         return true
     }
     

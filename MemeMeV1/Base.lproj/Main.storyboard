@@ -18,52 +18,67 @@
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sln-SV-D7m">
                                 <rect key="frame" x="0.0" y="622" width="375" height="45"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="0WA-6i-qRb"/>
-                                </constraints>
                                 <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Ccl-tF-8n0"/>
                                     <barButtonItem title="Item" image="camera" catalog="system" id="ZsD-Js-bpN">
                                         <connections>
                                             <action selector="pickImageFromCamera:" destination="BYZ-38-t0r" id="0eo-XK-HT6"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem title="Pick From Gallery" id="ZTT-Ek-SoN">
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="YvT-hZ-dVd"/>
+                                    <barButtonItem title="Gallery" id="ZTT-Ek-SoN">
                                         <connections>
                                             <action selector="pickImageFromGallery:" destination="BYZ-38-t0r" id="oPf-r0-dqh"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="YQN-gU-1P3"/>
                                 </items>
                             </toolbar>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="N64-FM-NNR">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="622"/>
+                                <rect key="frame" x="0.0" y="45" width="375" height="577"/>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0eo-xA-SBY">
-                                <rect key="frame" x="26" y="30" width="323" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="V5J-m8-2v4">
+                                <rect key="frame" x="26" y="534.5" width="323" height="57.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="V5J-m8-2v4">
-                                <rect key="frame" x="26" y="558" width="323" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Ui-Ir-jPx">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="cNn-mj-iF7"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem systemItem="action" id="kNx-A7-e5m"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="1K5-TP-Qm2"/>
+                                    <barButtonItem title="Item" systemItem="cancel" id="Qy2-lZ-4kz"/>
+                                </items>
+                            </toolbar>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0eo-xA-SBY">
+                                <rect key="frame" x="25" y="70" width="325" height="57.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Sln-SV-D7m" firstAttribute="top" secondItem="V5J-m8-2v4" secondAttribute="bottom" constant="30" id="50Z-vZ-rWL"/>
-                            <constraint firstItem="0eo-xA-SBY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="26" id="9AM-vo-a01"/>
-                            <constraint firstItem="N64-FM-NNR" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="DbE-tk-gLk"/>
-                            <constraint firstItem="Sln-SV-D7m" firstAttribute="top" secondItem="N64-FM-NNR" secondAttribute="bottom" id="EcA-3k-OYz"/>
-                            <constraint firstItem="N64-FM-NNR" firstAttribute="trailing" secondItem="Sln-SV-D7m" secondAttribute="trailing" id="KD4-0b-mf7"/>
-                            <constraint firstItem="0eo-xA-SBY" firstAttribute="leading" secondItem="V5J-m8-2v4" secondAttribute="leading" id="Mao-EQ-nfx"/>
-                            <constraint firstItem="N64-FM-NNR" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="PMr-Bh-8Ae"/>
-                            <constraint firstItem="0eo-xA-SBY" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="Pnn-Rt-pUI"/>
-                            <constraint firstItem="N64-FM-NNR" firstAttribute="leading" secondItem="Sln-SV-D7m" secondAttribute="leading" id="SiQ-nf-MXR"/>
-                            <constraint firstItem="N64-FM-NNR" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="UqF-VM-9hj"/>
-                            <constraint firstItem="0eo-xA-SBY" firstAttribute="trailing" secondItem="V5J-m8-2v4" secondAttribute="trailing" id="YxZ-co-4LP"/>
-                            <constraint firstItem="V5J-m8-2v4" firstAttribute="centerX" secondItem="Sln-SV-D7m" secondAttribute="centerX" id="f2u-su-Cpu"/>
-                            <constraint firstItem="Sln-SV-D7m" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="vJT-DY-JTX"/>
+                            <constraint firstItem="N64-FM-NNR" firstAttribute="top" secondItem="8Ui-Ir-jPx" secondAttribute="bottom" id="5N8-Yo-Pz8"/>
+                            <constraint firstItem="Sln-SV-D7m" firstAttribute="top" secondItem="V5J-m8-2v4" secondAttribute="bottom" constant="30" id="7GU-h5-GxH"/>
+                            <constraint firstItem="0eo-xA-SBY" firstAttribute="top" secondItem="8Ui-Ir-jPx" secondAttribute="bottom" constant="25" id="MaW-ZB-wFC"/>
+                            <constraint firstItem="8Ui-Ir-jPx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="MeA-jY-nSg"/>
+                            <constraint firstItem="N64-FM-NNR" firstAttribute="trailing" secondItem="Sln-SV-D7m" secondAttribute="trailing" id="NvS-e1-cbL"/>
+                            <constraint firstItem="N64-FM-NNR" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="OP3-jt-Xaw"/>
+                            <constraint firstItem="Sln-SV-D7m" firstAttribute="top" secondItem="N64-FM-NNR" secondAttribute="bottom" id="PZO-Aj-Z8V"/>
+                            <constraint firstItem="8Ui-Ir-jPx" firstAttribute="leading" secondItem="N64-FM-NNR" secondAttribute="leading" id="QqV-Gu-1mo"/>
+                            <constraint firstItem="V5J-m8-2v4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="26" id="Tgq-Ou-qsG"/>
+                            <constraint firstItem="8Ui-Ir-jPx" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="VHj-1Z-Kfw"/>
+                            <constraint firstItem="0eo-xA-SBY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="25" id="dbb-lP-Thv"/>
+                            <constraint firstItem="8Ui-Ir-jPx" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="don-u0-Bng"/>
+                            <constraint firstItem="8Ui-Ir-jPx" firstAttribute="centerX" secondItem="0eo-xA-SBY" secondAttribute="centerX" id="g9p-Wd-FoN"/>
+                            <constraint firstItem="N64-FM-NNR" firstAttribute="leading" secondItem="Sln-SV-D7m" secondAttribute="leading" id="nAb-qb-h41"/>
+                            <constraint firstItem="8Ui-Ir-jPx" firstAttribute="trailing" secondItem="N64-FM-NNR" secondAttribute="trailing" id="niF-GN-d5P"/>
+                            <constraint firstItem="Sln-SV-D7m" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="ovJ-3c-LI6"/>
+                            <constraint firstItem="V5J-m8-2v4" firstAttribute="centerX" secondItem="Sln-SV-D7m" secondAttribute="centerX" id="x47-Xf-Oix"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="g3c-Gq-OLs"/>
