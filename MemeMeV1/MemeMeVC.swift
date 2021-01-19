@@ -19,7 +19,14 @@ class MemeMeVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var shareButton: UIBarButtonItem!
     
+    @IBOutlet weak var topToolBar: UIToolbar!
+    @IBOutlet weak var bottomToolBar: UIToolbar!
+    
+    
     // MARK: Variables
+    var memes = [Meme]()
+    
+    // Set as true when an image is set in the imageView Outlet
     var isImageSelected: Bool = false {
         didSet {
             shareButton.isEnabled = isImageSelected
@@ -97,6 +104,12 @@ class MemeMeVC: UIViewController, UITextFieldDelegate {
         
     }
     
+    // MARK: - Hide and Show top and Bottom ToolBar when saving picture
+    func hideToolBars(_ flag: Bool = true) {
+        self.topToolBar.isHidden = flag
+        self.bottomToolBar.isHidden = flag
+    }
+    
     // MARK: - Image From Camera
     @IBAction func pickImageFromCamera(_ sender: UIBarButtonItem) {
         // Create and launch the image picker from Camera
@@ -113,7 +126,13 @@ class MemeMeVC: UIViewController, UITextFieldDelegate {
     @IBAction func shareMeme(_ sender: UIBarButtonItem) {
         let memedImage = generateMemedImage()
         let controller = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
+        
+        controller.completionWithItemsHandler = { (type, completed, item, error) in
+            if completed { self.save(memedImage: memedImage) }
+        }
+        
         present(controller, animated: true, completion: nil)
+        
     }
     
     @IBAction func cancel(_ sender: UIBarButtonItem) {
@@ -152,21 +171,33 @@ class MemeMeVC: UIViewController, UITextFieldDelegate {
     // MARK: - Generate Memed Image from Frame
     private func generateMemedImage() -> UIImage {
         
-        
+        hideToolBars()
         
         UIGraphicsBeginImageContext(self.view.frame.size)
         view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
         let memedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         
+        hideToolBars(false)
+        
         return memedImage
+    }
+    
+    // MARK: - Save Memed Image
+    func save(memedImage: UIImage) {
+        let meme = Meme(topText: topTextField.text!
+                        , bottomText: bottomTextField.text!
+                        , originalImage: imageView.image!
+                        , memedImage: memedImage)
+        
+        memes.append(meme)
     }
 
     
 }
 
 
-
+// MARK: - Extension MemeMeVC ImagePicker Delegate
 extension MemeMeVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
