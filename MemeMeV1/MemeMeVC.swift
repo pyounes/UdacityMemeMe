@@ -72,8 +72,7 @@ class MemeMeVC: UIViewController, UITextFieldDelegate {
     
     // MARK: - UnSubscribe from notifications
     func unsubscribeToKeyboardNotification() {
-        NotificationCenter.default.removeObserver(self, name: UIWindow.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.removeObserver(self, name: UIWindow.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.removeObserver(self)
     }
     
     // MARK: - Action when keyboard is Shown or Hidden
